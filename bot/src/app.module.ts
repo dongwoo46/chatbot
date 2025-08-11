@@ -5,6 +5,7 @@ import { APP_GUARD } from '@nestjs/core';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { ChatModule } from './chats/chat.module';
+import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 
 @Module({
   imports: [
@@ -23,6 +24,12 @@ import { ChatModule } from './chats/chat.module';
     UsersModule,
     AuthModule,
     ChatModule,
+  ],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard, // 모든 요청에 JWT Guard 적용
+    },
   ],
 })
 export class AppModule {}

@@ -1,5 +1,4 @@
 import { IsEmail, IsIn, IsString, MinLength } from 'class-validator';
-import { Not } from 'typeorm';
 
 export class CreateUserDto {
   @IsEmail()
